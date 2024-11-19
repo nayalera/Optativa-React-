@@ -1,0 +1,79 @@
+@import "../../custom";
+
+body.crew {
+    background-image: url("./assets/crew/background-crew-mobile.jpg");
+    @include media-breakpoint-up(sm) {
+        background-image: url("./assets/crew/background-crew-tablet.jpg");
+    }
+    @include media-breakpoint-up(lg) {
+        background-image: url("./assets/crew/background-crew-desktop.jpg");
+    }
+}
+.crew {
+    .crew-viewer {
+        @apply tw-text-center;
+        position: relative;
+        overflow: hidden;
+        img {
+            @apply tw-mx-auto tw-block;
+            align-self: stretch;
+            opacity: 0%;
+            transform: translateY(rem(30));
+            transition: $requiredTime;
+            position: absolute;
+            height: 100%;
+            max-width: 100%;
+            bottom: 0;
+            &.active {
+                opacity: 100%;
+                transform: translateY(0);
+                position: relative;
+                z-index: 1;
+            }
+        }
+    }
+    .tabs-controller {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: rem(15);
+        position: relative;
+        z-index: 1;
+        li {
+            width: rem(15);
+            height: rem(15);
+            background-color: $white;
+            mix-blend-mode: normal;
+            opacity: 0.17;
+            transition: $requiredTime;
+            border-radius: 50%;
+            cursor: pointer;
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+    .info-container {
+        @apply  text-center lg:tw-text-start lg:tw-min-h-[20rem];
+        height: fit-content;
+        position: relative;
+        overflow: hidden;
+        li {
+            @apply tw-translate-y-14 lg:tw-translate-x-14 lg:tw-translate-y-0 tw-min-h-[14rem];
+            opacity: 0%;
+            transition: $requiredTime;
+            position: absolute;
+            left: 0;
+            top: 0;
+            &.active {
+                opacity: 100%;
+                transform: translateX(0) translateY(0);
+                z-index: 1;
+                position: relative;
+            }
+            &:not(.active) {
+                cursor: default;
+            }
+        }
+    }
+}

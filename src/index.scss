@@ -1,0 +1,93 @@
+@import "./custom";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    @apply tw-text-[5rem] md:tw-text-[9.3em];
+    font-style: normal;
+    font-weight: 400;
+}
+h2 {
+    @apply tw-text-4xl md:tw-text-6xl;
+    font-style: normal;
+    font-weight: 400;
+}
+h3 {
+    @apply tw-text-2xl md:tw-text-4xl;
+    font-style: normal;
+    font-weight: 400;
+}
+h4 {
+    @apply tw-text-xl md:tw-text-3xl;
+    font-style: normal;
+    font-weight: 400;
+}
+h5 {
+    @apply tw-text-lg md:tw-text-2xl;
+    font-style: normal;
+    font-weight: 400;
+}
+h6 {
+    @apply tw-text-lg md:tw-text-xl;
+    font-style: normal;
+    font-weight: 400;
+}
+* {
+    box-sizing: border-box;
+}
+p {
+    @apply md:tw-text-xl;
+}
+:root {
+    color: $white;
+}
+body {
+    @apply tw-font-Bellefair tw-text-white;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    background-color: $black-main;
+    #root {
+        flex: 1;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+}
+.start-anim-left{
+    animation-name: animation-left;
+    animation-duration: 2s;
+}
+
+@keyframes animation-left{
+    0%{
+        transform: translateX(rem(20));
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(rem(0));
+        opacity: 1;
+    }
+}
+.start-anim-top{
+    animation-name: animation-top;
+    animation-duration: 2s;
+}
+
+@keyframes animation-top{
+    0%{
+        transform: translateY(rem(20));
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(rem(0));
+        opacity: 1;
+    }
+}

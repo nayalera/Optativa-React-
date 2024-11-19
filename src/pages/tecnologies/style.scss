@@ -1,0 +1,120 @@
+@import "../../custom";
+
+body.technology {
+    background-image: url("./assets/technology/background-technology-mobile.jpg");
+    @include media-breakpoint-up(sm) {
+        background-image: url("./assets/technology/background-technology-tablet.jpg");
+    }
+    @include media-breakpoint-up(lg) {
+        background-image: url("./assets/technology/background-technology-desktop.jpg");
+    }
+}
+div.technology {
+    @include media-breakpoint-down(lg) {
+        max-width: 100%;
+    }
+    .land-viewer {
+        @apply tw-text-center;
+        overflow-y: hidden;
+        position: relative;
+        img {
+            @apply tw-mx-auto tw-block;
+            align-self: stretch;
+            opacity: 0%;
+            transform: translateY(rem(30));
+            transition: $requiredTime;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            &.active {
+                opacity: 100%;
+                transform: translateY(0);
+                position: relative;
+                z-index: 1;
+            }
+        }
+    }
+    .port-viewer {
+        @apply tw-text-center;
+        overflow-y: hidden;
+        position: relative;
+        img {
+            align-self: stretch;
+            opacity: 0%;
+            transform: translateY(rem(30));
+            transition: $requiredTime;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            &.active {
+                opacity: 100%;
+                transform: translateY(0);
+                position: relative;
+                z-index: 1;
+            }
+        }
+    }
+    .tabs-controller {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: rem(15);
+        position: relative;
+        @include media-breakpoint-up(lg) {
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        z-index: 1;
+        counter-reset: section;
+        li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: rem(30);
+            &:before {
+                counter-increment: section;
+                content: counter(section);
+            }
+            width: rem(35);
+            height: rem(35);
+            border: 1px solid $white;
+            transition: $requiredTime;
+            border-radius: 50%;
+            color: $white;
+            cursor: pointer;
+            &.active {
+                opacity: 1;
+                background-color: $white;
+                color: $black-main;
+            }
+            &:not(.active):hover{
+                color: $black-main;
+                background-color: rgba($white, 0.5) ;
+            }
+        }
+    }
+    .info-container {
+        @apply tw-my-10 lg:tw-m-0 lg:tw-max-w-xl text-center lg:tw-text-start lg:tw-min-h-[20rem];
+        height: fit-content;
+        position: relative;
+        overflow: hidden;
+        li {
+            @apply tw-translate-y-14 lg:tw-translate-x-14 lg:tw-translate-y-0 tw-min-h-[14rem];
+            opacity: 0%;
+            transition: $requiredTime;
+            position: absolute;
+            left: 0;
+            top: 0;
+            &.active {
+                opacity: 100%;
+                transform: translateX(0) translateY(0);
+                z-index: 1;
+                position: relative;
+            }
+            &:not(.active) {
+                cursor: default;
+            }
+        }
+    }
+}

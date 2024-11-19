@@ -1,0 +1,88 @@
+@import "../../custom";
+
+.navbar {
+    // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    .offcanvas {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(40.7742px);
+        .navbar-nav {
+            @apply md:tw-w-fit tw-ml-auto mb-2 mb-md-0 tw-px-2 md:tw-bg-[#000]/30 tw-text-white tw-justify-end tw-flex;
+            counter-reset: counter-section;
+            // align-items: stretch;
+            .nav-item {
+                a {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    gap: rem(8);
+                    letter-spacing: rem(2.7);
+                    font-weight: 400;
+                    text-transform: uppercase;
+                    color: $white;
+                    &::before {
+                        content: "0" counter(counter-section);
+                        counter-increment: counter-section;
+                        font-weight: 700;
+                    }
+                    @include media-breakpoint-down(md) {
+                        @apply tw-px-2 tw-py-3 tw-my-3;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            right: 0;
+                            top: 50%;
+                            width: rem(3);
+                            height: 100%;
+                            opacity: 0;
+                            background-color: $white;
+                            transition: 1s;
+                            transform: translateY(-50%);
+                        }
+                        &.active,
+                        &:hover {
+                            &::after {
+                                opacity: 1;
+                            }
+                        }
+                        &:not(.active):hover {
+                            &::after {
+                                mix-blend-mode: normal;
+                                opacity: 0.5;
+                            }
+                        }
+                    }
+                    @include media-breakpoint-up(md) {
+                        @apply tw-px-2 tw-py-6 tw-mx-3;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            left: 50%;
+                            bottom: 0%;
+                            width: 0%;
+                            height: rem(3);
+                            background-color: $white;
+                            transition: 0.3s;
+                            transform: translateX(-50%);
+                        }
+
+                        &:not(.active) {
+                            &::after {
+                                mix-blend-mode: normal;
+                                opacity: 0.5;
+                            }
+                        }
+                        &.active,
+                        &:hover {
+                            &::after {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+            @include media-breakpoint-down(md) {
+                padding: 0px;
+            }
+        }
+    }
+}
